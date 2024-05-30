@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev Burguer - A melhor 🍔 dev</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -37,7 +38,7 @@
                     <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aperiam adipisci quo suscipit fugiat beatae placeat blanditiis</p>
                     <div class="flex justify-between gap-2 items-center mt-3">
                         <p class="font-bold text-lg">R$ 18.90</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" data-name="Hamburguer Smash" data-price="18.90"></i></button>
+                        <button data-name="Hamburguer Smash" data-price="18.90" class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" ></i></button>
                     </div>
                 </div>
             </div>
@@ -49,7 +50,7 @@
                     <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aperiam adipisci quo suscipit fugiat beatae placeat blanditiis</p>
                     <div class="flex justify-between gap-2 items-center mt-3">
                         <p class="font-bold text-lg">R$ 32.90</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" data-name="Hamburguer duplo" data-price="32.90"></i></button>
+                        <button data-name="Hamburguer duplo" data-price="32.90" class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white"></i></button>
                     </div>
                 </div>
             </div>
@@ -61,7 +62,7 @@
                     <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aperiam adipisci quo suscipit fugiat beatae placeat blanditiis</p>
                     <div class="flex justify-between gap-2 items-center mt-3">
                         <p class="font-bold text-lg">R$ 28.90</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" data-name="Hamburguer Smash Duplo" data-price="28.90"></i></button>
+                        <button data-name="Hamburguer Smash Duplo" data-price="28.90" class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white"></i></button>
                     </div>
                 </div>
             </div>
@@ -73,7 +74,7 @@
                     <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aperiam adipisci quo suscipit fugiat beatae placeat blanditiis</p>
                     <div class="flex justify-between gap-2 items-center mt-3">
                         <p class="font-bold text-lg">R$ 29.90</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" data-name="Hamburguer da casa" data-price="29.90"></i></button>
+                        <button data-name="Hamburguer da casa" data-price="29.90" class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" ></i></button>
                     </div>
                 </div>
             </div>
@@ -91,7 +92,7 @@
                         <p class="font-bold">Coca lata</p>
                         <div class="flex justify-between gap-2 items-center mt-3">
                             <p class="font-bold text-lg">R$ 6</p>
-                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" data-name="Coca lata" data-price="6"></i></button>
+                            <button data-name="Coca lata" data-price="6" class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" ></i></button>
                         </div>
                     </div>
                 </div>
@@ -102,7 +103,7 @@
                         <p class="font-bold">Guaraná lata</p>
                         <div class="flex justify-between gap-2 items-center mt-3">
                             <p class="font-bold text-lg">R$ 6</p>
-                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" data-name="Guarana lata" data-price="6"></i></button>
+                            <button data-name="Guarana lata" data-price="6" class="bg-gray-900 px-5 rounded add-to-cart-btn"><i class="fa fa-cart-plus text-lg text-white" ></i></button>
                         </div>
                     </div>
                 </div>
@@ -112,11 +113,11 @@
         </section>
     </main>
 
-    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden">
+    <div id="cart-modal" class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden">
         <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
             <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
-            <div id="cart-item" class="flex justify-between mb-2 flex-col">
-                <p class="font-bold">0.00</span></p>
+            <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
+                <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
                 <p class="font-bold mt-4">Endereço de entrega:</p>
                 <input type="text" placeholder="Digite seu endereço completo..." id="adress" class="w-full border-2 p-1 rounded my-1">
                 <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
@@ -126,7 +127,6 @@
                     <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
                 </div>
             </div>
-        </div>
     </div>
 
     <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
@@ -136,5 +136,8 @@
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
     </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./public/js/app.js"></script>
 </body>
 </html>
